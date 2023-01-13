@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor | News homepage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <style>
+    [x-cloak] {
+      display: none;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: "'Inter', sans-serif",
+          },
+          colors: {
+            softOrange: "hsl(35, 77%, 62%)",
+            softRed: "hsl(5, 85%, 63%)",
+            offWhite: "hsl(36, 100%, 99%)",
+            grayishBlue: "hsl(233, 8%, 79%)",
+            darkGrayishBlue: "hsl(236, 13%, 42%)",
+            veryDarkBlue: "hsl(240, 100%, 5%)",
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="font-inter">
+  
+  <header class="relative flex justify-between items-center px-6 py-4 md:py-10 md:px-36" x-data="{ open: false }"
+  x-on:open.window="open ? document.body.style.overflow = 'hidden' : document.body.style.overflow = 'auto'">
+    <div>
+      <svg width="65" height="40">
+        <path d="M23.016 39.2c.317 0 .574-.093.77-.28.196-.187.294-.457.294-.812v-1.82c0-.448.033-.84.098-1.176.065-.336.145-.663.238-.98l5.09-18.122 4.822 18.57c.112.384.193.682.243.895l.023.099c.047.215.07.453.07.714v1.82c0 .355.098.625.294.812.196.187.453.28.77.28h10.696c.299 0 .55-.093.756-.28.205-.187.308-.457.308-.812v-1.82c0-.373.023-.705.07-.994.047-.29.135-.677.266-1.162L54.04 7.224c.299-1.25.765-2.254 1.4-3.01.635-.756 1.363-1.311 2.184-1.666l.672-.308c.336-.168.574-.331.714-.49.14-.159.21-.369.21-.63 0-.336-.117-.607-.35-.812C58.637.103 58.287 0 57.82 0h-8.904c-.467 0-.817.103-1.05.308-.233.205-.35.476-.35.812 0 .261.06.471.182.63.121.159.313.303.574.434l.616.224c1.12.41 1.871.999 2.254 1.764s.453 1.661.21 2.688l-5.535 23.486-6.477-25.81c-.133-.58-.17-1.018-.11-1.31l.026-.104c.093-.29.317-.49.672-.602l1.232-.336c.299-.112.518-.257.658-.434a.986.986 0 0 0 .21-.63c0-.355-.112-.63-.336-.826C41.468.098 41.122 0 40.656 0H24.78c-.448 0-.789.098-1.022.294-.233.196-.35.471-.35.826 0 .224.06.415.182.574.121.159.322.294.602.406l1.176.42c.261.093.462.243.602.448.14.205.294.607.462 1.204l1.751 6.742-5.553 19.475L16.128 4.48c-.147-.49-.194-.898-.14-1.223l.028-.135c.093-.345.327-.574.7-.686l1.456-.336c.504-.168.756-.504.756-1.008 0-.336-.112-.602-.336-.798C18.368.098 18.022 0 17.556 0H1.344C.896 0 .56.098.336.294.112.49 0 .756 0 1.092c0 .224.056.434.168.63.112.196.29.35.532.462l1.232.392c.355.13.625.308.812.532.187.224.345.579.476 1.064l7.84 30.408c.112.43.191.751.238.966.047.215.07.462.07.742v1.82c0 .355.103.625.308.812.205.187.467.28.784.28h10.556Zm34.804.7c1.195 0 2.263-.29 3.206-.868a6.338 6.338 0 0 0 2.24-2.338c.55-.98.826-2.04.826-3.178 0-1.157-.275-2.212-.826-3.164a6.325 6.325 0 0 0-2.24-2.282c-.943-.57-2.011-.854-3.206-.854-1.157 0-2.207.285-3.15.854a6.325 6.325 0 0 0-2.24 2.282c-.55.952-.826 2.007-.826 3.164 0 1.139.275 2.198.826 3.178.55.98 1.297 1.76 2.24 2.338.943.579 1.993.868 3.15.868Z" fill="#00001A"/>
+      </svg>
+    </div>
+      <button x-on:click="open = !open" :class="{ 'hidden': open }"
+      class="md:hidden">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+          </svg>
+      </button>
+
+      <div x-cloak class="fixed inset-0 z-1 bg-gray-900/50" x-show="open" x-transition:enter="ease-out duration-300" 
+      x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-50" 
+      x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-50" 
+      x-transition:leave-end="opacity-0"></div>
+
+
+      <ul x-cloak x-show="open" 
+      x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-x-full" 
+      x-transition:enter-end="opacity-100 translate-x-0"
+      x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-x-0" 
+      x-transition:leave-end="opacity-0 translate-x-full" 
+      class="absolute top-0 right-0 z-5 w-9/12 bg-blue-light space-y-6 text-left
+       items-center justify-center text-lg py-32 px-4 bg-offWhite h-screen overflow-hidden">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">New</a>
+          </li>
+          <li>
+            <a href="#">Popular</a>
+          </li>
+          <li>
+            <a href="#">Trending</a>
+          </li>
+          <li>
+            <a href="#">Categories</a>
+          </li>
+      </ul>
+
+      <ul class="space-x-8 hidden md:flex">
+          <li>
+            <a href="#" class="hover:text-softRed">Home</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-softRed">New</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-softRed">Popular</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-softRed">Trending</a>
+          </li>
+          <li>
+            <a href="#" class="hover:text-softRed">Categories</a>
+          </li>
+      </ul>
+
+      <button x-cloak x-on:click="open = !open" :class="{ 'hidden': !open }" class="relative z-10">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z"></path>
+          </svg>
+      </button>
+  </header>
+
+  <main class="grid grid-cols-1 gap-y-8 px-6 md:grid-cols-3 md:grid-rows-4 md:gap-x-8 md:gap-y-8 md:px-36 place-center">
+    <div class="grid space-y-4 md:grid-cols-2 md:col-span-2 md:row-span-3">
+      <img class="md:col-span-2 h-64 w-full object-cover" src="./images/image-web-3-desktop.jpg" alt="main web 3 image">
+      <h1 class="text-5xl font-inter m-0 font-extrabold">The Bright Future of Web 3.0?</h1>
+      <div class="flex flex-col items-start justify-between space-y-4">
+        <p class="text-darkGrayishBlue text-base leading-relaxed">We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. 
+          But is it really fulfilling its promise?</p>
+        <button class="bg-softRed text-offWhite font-inter font-bold
+        tracking-widest text-sm uppercase w-1/2 h-10 md:h-1/4">Read more</button>
+      </div>
+    </div>
+
+    <div class=" md:row-span-3 bg-veryDarkBlue text-offWhite space-y-2 px-6 py-9">
+
+      <h2 class="text-3xl font-extrabold text-softOrange">New</h2>
+      <a href="#">
+        <h3 class="text-xl font-bold hover:text-softOrange mt-4 cursor-pointer">
+          Hydrogen VS Electric Cars
+        </h3>
+      </a>
+      <p class="text-sm text-offWhite font-normal">Will hydrogen-fueled cars ever catch up to EVs?</p>
+      <span class="h-[1px] bg-darkGrayishBlue w-full block"></span>
+      
+      <a href="#">
+        <h3 class="text-xl font-bold hover:text-softOrange mt-4 cursor-pointer">
+          The Downsides of AI Artistry
+        </h3>
+      </a>
+
+      <p class="text-sm text-offWhite font-normal">What are the possible adverse effects of on-demand AI image generation?</p>
+      <span class="h-[1px] bg-darkGrayishBlue w-full block"></span>
+
+      <a href="#">
+        <h3 class="text-xl font-bold hover:text-softOrange mt-4 cursor-pointer">
+          Is VC Funding Drying Up?
+        </h3>
+      </a>
+
+      <p class="text-sm text-offWhite font-normal">Private funding by VC firms is down 50% YOY. We take a look at what that means.</p>
+
+    </div>
+
+    <div class="flex space-x-2 row-span-1 mt-4 md:mt-0">
+
+      <img class="h-32" src="./images/image-retro-pcs.jpg" alt="retro pcs">
+      <div class="flex justify-between flex-col">
+        <span class="text-2xl text-grayishBlue font-bold">01</span>
+        <a href="#">
+          <h4 class="font-extrabold text-md hover:text-softRed">Reviving Retro PCs</h4>
+        </a>
+        <p class="text-sm text-darkGrayishBlue">What happens when old PCs are given modern upgrades?</p>
+      </div>
+    </div>
+    <div class="flex space-x-2 row-span-1">
+
+      <img class="h-32" src="./images/image-top-laptops.jpg" alt="retro pcs">
+      <div class="flex justify-between flex-col">
+        <span class="text-2xl text-grayishBlue font-bold">02</span>
+        <a href="#">
+          <h4 class="font-extrabold text-md hover:text-softRed">Top 10 Laptops of 2023</h4>
+        </a>
+        <p class="text-sm text-darkGrayishBlue">Our best picks for various needs and budgets.</p>
+      </div>
+    </div>
+    <div class="flex space-x-2 row-span-1 mb-4 md:mb-0">
+
+      <img class="h-32" src="./images/image-gaming-growth.jpg" alt="retro pcs">
+      <div class="flex flex-col justify-between">
+        <span class="text-2xl text-grayishBlue font-bold">03</span>
+        <a href="#">
+          <h4 class="font-extrabold text-md hover:text-softRed">The Growth of Gaming</h4>
+        </a>
+        <p class="text-sm text-darkGrayishBlue">How the pandemic has sparked fresh opportunities.</p>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
